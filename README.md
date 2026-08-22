@@ -1,0 +1,1 @@
+This repository contains algorithm examples for personal study. All code was generated with AI.

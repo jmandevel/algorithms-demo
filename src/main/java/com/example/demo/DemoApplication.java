@@ -2,6 +2,7 @@ package com.example.demo;
 
 import processing.core.PApplet;
 
+// test window with red background
 public class DemoApplication extends PApplet {
 
 	public static void main(String[] args) {

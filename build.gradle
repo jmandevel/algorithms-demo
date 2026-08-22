@@ -26,6 +26,150 @@ application {
 	mainClass = 'com.example.demo.DemoApplication'
 }
 
+tasks.register('runPrims', JavaExec) {
+	group = 'application'
+	description = "Run the interactive Prim's algorithm demonstration"
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.graphs.PrimsAlgorithmApplication'
+}
+
+tasks.register('runKruskals', JavaExec) {
+	group = 'application'
+	description = "Run the interactive Kruskal's algorithm demonstration"
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.graphs.KruskalsAlgorithmApplication'
+}
+
+tasks.register('runWarshalls', JavaExec) {
+	group = 'application'
+	description = "Run the interactive Warshall's algorithm demonstration"
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.graphs.WarshallsAlgorithmApplication'
+}
+
+tasks.register('runAStar', JavaExec) {
+	group = 'application'
+	description = "Run the interactive A* algorithm demonstration"
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.graphs.AStarAlgorithmApplication'
+}
+
+tasks.register('runDijkstras', JavaExec) {
+	group = 'application'
+	description = "Run the interactive Dijkstra's algorithm demonstration"
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.graphs.DijkstrasAlgorithmApplication'
+}
+
+tasks.register('runFenwick', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive Fenwick tree demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.data_structures.FenwickTreeApplication'
+}
+
+tasks.register('runBinarySearch', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive binary search demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.searching.BinarySearchApplication'
+}
+
+tasks.register('runLinearSearch', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive linear search demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.searching.LinearSearchApplication'
+}
+
+tasks.register('runMergeSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive merge sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.MergeSortApplication'
+}
+
+tasks.register('runQuickSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive quick sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.QuickSortApplication'
+}
+
+tasks.register('runRadixSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive radix sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.RadixSortApplication'
+}
+
+tasks.register('runInsertionSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive insertion sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.InsertionSortApplication'
+}
+
+tasks.register('runBubbleSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive bubble sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.BubbleSortApplication'
+}
+
+tasks.register('runBogoSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive bogo sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.BogoSortApplication'
+}
+
+tasks.register('runHeapSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive heap sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.HeapSortApplication'
+}
+
+tasks.register('runSelectionSort', JavaExec) {
+	group = 'application'
+	description = 'Run the interactive selection sort demonstration'
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'com.example.demo.sorting.SelectionSortApplication'
+}
+
+def additionalAlgorithms = [
+	'breadthFirstSearch': 'com.example.demo.graphs.BreadthFirstSearchApplication',
+	'depthFirstSearch': 'com.example.demo.graphs.DepthFirstSearchApplication',
+	'bellmanFord': 'com.example.demo.graphs.BellmanFordApplication',
+	'floydWarshall': 'com.example.demo.graphs.FloydWarshallApplication',
+	'topologicalSort': 'com.example.demo.graphs.TopologicalSortApplication',
+	'sieveOfEratosthenes': 'com.example.demo.math.SieveOfEratosthenesApplication',
+	'euclideanGcd': 'com.example.demo.math.EuclideanGcdApplication',
+	'fibonacci': 'com.example.demo.dynamic.FibonacciApplication',
+	'knapsack': 'com.example.demo.dynamic.KnapsackApplication',
+	'longestCommonSubsequence': 'com.example.demo.dynamic.LongestCommonSubsequenceApplication',
+	'coinChange': 'com.example.demo.dynamic.CoinChangeApplication',
+	'activitySelection': 'com.example.demo.greedy.ActivitySelectionApplication',
+	'huffmanCoding': 'com.example.demo.greedy.HuffmanCodingApplication',
+	'unionFind': 'com.example.demo.data_structures.UnionFindApplication',
+	'binarySearchTree': 'com.example.demo.data_structures.BinarySearchTreeApplication',
+	'hashTable': 'com.example.demo.data_structures.HashTableApplication',
+	'trie': 'com.example.demo.data_structures.TrieApplication',
+	'stack': 'com.example.demo.data_structures.StackApplication',
+	'queue': 'com.example.demo.data_structures.QueueApplication',
+	'kMeans': 'com.example.demo.clustering.KMeansApplication'
+]
+
+additionalAlgorithms.each { taskName, className ->
+	tasks.register("run${taskName.capitalize()}", JavaExec) {
+		group = 'application'
+		description = "Run the interactive ${className.substring(className.lastIndexOf('.') + 1)} demonstration"
+		classpath = sourceSets.main.runtimeClasspath
+		mainClass = className
+	}
+}
+
 tasks.named('test') {
 	useJUnitPlatform()
 }
